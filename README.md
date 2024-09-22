@@ -40,6 +40,9 @@ case_000_video_part_001/00000000.png   0.0    7     case_000
 case_000_video_part_001/00000060.png   1.0    7     case_000
 
 
+To train the feature extractor, run the following command:
+
+```python
 python train.py -c modules/cnn/config/config_feature_extract_single.yml \
     --exp_name backbone_vit \
     --task 'task' \
@@ -50,7 +53,12 @@ python train.py -c modules/cnn/config/config_feature_extract_single.yml \
     --model cnn.vit_base_patch16_224
 
 
+```markdown
+## Stage 2 Training Instructions
 
+To train the stage 2, run the following command:
+
+```python
 python train.py -c modules/mstcn/config/config_tcn_single.yml \
     --exp_name ms_tcn_w_kan \
     --out_features 8 \
@@ -61,4 +69,3 @@ python train.py -c modules/mstcn/config/config_tcn_single.yml \
     --mstcn_stages 2 \
     --teacher_exp_name backbone_vit \
     --model mstcn.MultiStageModel_surgvu
-
