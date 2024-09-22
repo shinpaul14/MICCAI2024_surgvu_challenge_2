@@ -21,7 +21,7 @@ class Cholec80FeatureExtract:
         self.transformations = self.__get_transformations()
 
         self.df = {}
-        self.df["all"] = pd.read_csv(self.cholec_root_dir / "surgvu_challnege.csv")
+        self.df["all"] = pd.read_csv(self.cholec_root_dir / "surgvu_challnege.txt")
 
         self.current_fold = hparams.fold
         fold_map = {
