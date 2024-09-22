@@ -83,7 +83,7 @@ class MultiStageModel_surgvu(nn.Module):
                 (output_classes_step, out_classes_step.unsqueeze(0)), dim=0)
      
         output_classes_step = (output_classes_step+pred)
-        output_classes_step = (output_classes_step + pred_kan)#/3
+        output_classes_step = (output_classes_step + pred_kan)/3
     
         return output_classes_step
 
