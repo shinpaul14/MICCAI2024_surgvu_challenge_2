@@ -77,14 +77,12 @@ class MultiStageModel_surgvu(nn.Module):
         output_classes_step = out_classes_step.unsqueeze(0)
  
         for s in self.stages:
-            # out_classes_step = s(F.softmax(out_classes_step, dim=1))
-            out_classes_step = s(out_classes_step)
+            out_classes_step = s(F.softmax(out_classes_step, dim=1))
+            out_classes_step = (out_classes_step + pred + pred_kan) / 3
             output_classes_step = torch.cat(
                 (output_classes_step, out_classes_step.unsqueeze(0)), dim=0)
      
-        output_classes_step = (output_classes_step+pred)
-        output_classes_step = (output_classes_step + pred_kan)/3
-    
+   
         return output_classes_step
 
     @staticmethod
